@@ -1,7 +1,5 @@
 $( document ).ready(function() {
 
-	alteraHtml('Me');
-
 	$(".arrow").click(function(){
 		
 		if($(this).hasClass('arrowUp'))
