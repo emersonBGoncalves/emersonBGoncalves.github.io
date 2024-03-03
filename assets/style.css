@@ -1,0 +1,156 @@
+html, body {
+	background-color: #222222;
+	padding: 0;
+	margin: 0;
+	font-size: large;
+	cursor: default;
+	overflow: hidden;
+}
+
+.container {
+	display: grid;
+  	grid-template-columns: 1fr 10fr;
+    width: 100%;
+}
+.leftMenu {
+	width: max-content;
+	height: 100vh;
+	border-right: 1px solid #2B2B2B;
+	color: #D3D3D3;
+	padding: 20px 75px 20px 20px;
+}
+
+.rightMenu {
+    height: 100vh;
+    color: #D3D3D3;
+    padding: 0px;
+}
+.trFather1 svg path:last-child{
+	fill: #4FC3F7;
+	stroke: #4FC3F7;
+}
+
+.trFather1 svg path:first-child{
+	stroke: #4FC3F7;
+}
+
+.trFather2 td{
+	padding-left: 30px;
+}
+
+.trFather2 svg path:last-child{
+	fill: #7EB94D;
+	stroke: #7EB94D;
+}
+
+.trFather2 svg path:first-child{
+	stroke: #7EB94D;
+}
+
+.trFather3 td{
+	padding-left: 60px;
+}
+
+.trFather3 svg path:last-child{
+	fill: #FC618D;
+	stroke: #FC618D;
+}
+
+.trFather3 svg path:first-child{
+	stroke: #FC618D;
+}
+
+.trSon td{
+	padding-left: 90px;
+	cursor: pointer;
+}
+
+.trSon td:hover{
+	color: #FCE566;
+}
+
+svg {
+	width: 25px;
+	height: 25px;
+	vertical-align: bottom;
+}
+
+.arrow g path{
+	fill: #D3D3D3 !important;
+	stroke: #D3D3D3 !important;
+}
+
+.arrow {
+	cursor: pointer;
+}
+
+.arrow:hover g path, .arrow:active g path, .close:hover path {
+	fill: #FCE566 !important;
+	stroke: #FCE566 !important;
+}
+
+.smallDark {
+	font-size: small;
+    color: #808080;
+}
+
+td {
+	padding-bottom: 5px;
+}
+
+.arrowUp {
+	transform: rotate(180deg);
+}
+
+.hide {
+  	opacity: 0;
+}
+
+tr {
+  	opacity: 1;
+	transition: opacity 0.2s linear;
+}
+
+.abas {
+	width: 100%;
+    height: 50px;
+	border-bottom: 1px solid #2B2B2B;
+	display: -webkit-inline-box;
+}
+
+.aba {
+	width: max-content;
+    padding: 15px 20px 15px 20px;
+    opacity: 0.9;
+	font-size: smaller;
+}
+
+.aba:not(.inactive) {
+    background-color: #2B2B2B;
+}
+
+.aba svg {
+	width: 15px;
+	height: 15px;
+}
+
+.close {
+	margin-left: 7px;
+	cursor: pointer;
+}
+
+.aba.active {
+	border-bottom: 2px solid #FCE566;
+}
+
+.aba.inactive:hover {
+	background-color: #2B2B2B;
+}
+
+.aba.inactive {
+	cursor: pointer;
+}
+
+.trSon.active {
+	color: #FCE566;
+}
