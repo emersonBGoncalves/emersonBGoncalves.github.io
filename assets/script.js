@@ -1,12 +1,6 @@
 $( document ).ready(function() {
 
-	const htmls = {
-		Nada: "Nada aqui",
-		Tst: "Teste",
-		Me: "aadsadada"
-	};
-
-	$(".bodyClass").html(htmls['Me']);
+	alteraHtml('Me');
 
 	$(".arrow").click(function(){
 		
@@ -101,7 +95,9 @@ $( document ).ready(function() {
 	
 	function alteraHtml(html)
 	{
-		$(".bodyClass").html(htmls[html]);
+		console.log("." + html);
+		$(".archives").hide();
+		$("." + html).show();
 	}
 
 	function url_content(url)
