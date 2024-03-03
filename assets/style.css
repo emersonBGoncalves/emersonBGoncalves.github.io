@@ -4,7 +4,6 @@ html, body {
 	margin: 0;
 	font-size: large;
 	cursor: default;
-	overflow: hidden;
 }
 
 .container {
@@ -203,4 +202,49 @@ p {
 
 .identy1 {
 	margin-left: 40px;
+}
+
+.identy2 {
+	margin-left: 80px;
+}
+
+.identy3 {
+	margin-left: 120px;
+}
+
+.miniFoto {
+	width: 20px;
+    vertical-align: bottom;
+	cursor: pointer;
+}
+
+.miniFoto:hover {
+	opacity: 0.7;
+}
+
+#divLargerImage
+{
+    display: none;
+    position: absolute;
+	top: 10%;
+    left: 40%;
+    z-index: 99;
+}
+
+.circles {
+	display: inline-flex;
+}
+
+.circle {
+	width: 15px;
+	height: 15px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+    background-color: #D3D3D3;
+	margin-right: 5px;
+}
+
+.preenchido {
+	background-color: #C2185B;
 }

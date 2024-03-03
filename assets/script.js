@@ -90,7 +90,41 @@ $( document ).ready(function() {
 		alteraHtml($(this).data("html"));
 		$(".trSon[data-html=" + $(this).data("html") + "]").addClass("active");
 	});
-	
+
+	$(".conteudo").each(function( index ) {
+		$(this).find('p').length;
+		for(var i = 1; i <= $(this).find('p').length; i++)
+		{
+			$(this).prev().append('<p class="dark">' + i + '</p>');	
+		}
+	});
+
+	$('.miniFoto').click(function () {
+		var $img = $(this);
+		$('#divLargerImage').html($img.clone().width(500)).add($('#divOverlay')).fadeIn();
+	});
+
+	$('#divLargerImage').add($('#divOverlay')).click(function () {
+		$('#divLargerImage').add($('#divOverlay')).fadeOut(function () {
+			$('#divLargerImage').empty();
+		});
+	});
+
+	$(".circles").each(function( index ) {
+		var preenchidos = $(this).data('qtd');
+		for(var i = 1; i <= 5; i++)
+		{
+			var classe = "";
+			if(preenchidos > 0)
+			{
+				classe = 'preenchido';
+				preenchidos--;
+			}
+
+			$(this).append('<div class="circle ' + classe + '"></div>');	
+		}
+	});
+
 	function alteraHtml(html)
 	{
 		console.log("." + html);
