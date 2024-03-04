@@ -66,6 +66,32 @@ $( document ).ready(function() {
 			alteraHtml('Nada');
 	});
 
+	$(document).on('mousedown', '.aba',  function(e){
+
+        if(event.which === 2){
+         	e.stopPropagation();
+
+			var active = $(this).hasClass("active");
+
+			$(this).remove();
+
+			if(active)
+			{
+				$(".trSon").removeClass("active");
+				if($(".aba").length > 0)
+				{
+					$($(".aba")[0]).addClass("active").removeClass("inactive");
+					alteraHtml($($(".aba")[0]).data("html"));
+					
+					$(".trSon[data-html=" + $($(".aba")[0]).data("html") + "]").addClass("active");
+				}
+			}
+
+			if($(".aba").length == 0)
+				alteraHtml('Nada');
+        }
+      });
+
 	$(".trSon").click(function(){
 		$(".trSon").removeClass("active");
 		$(this).addClass("active");
@@ -90,6 +116,11 @@ $( document ).ready(function() {
 		alteraHtml($(this).data("html"));
 		$(".trSon[data-html=" + $(this).data("html") + "]").addClass("active");
 	});
+
+	$( "#sortable" ).sortable({
+      revert: true,
+	  axis: "x"
+    });
 
 	$(".conteudo").each(function( index ) {
 		$(this).find('p').length;
@@ -130,7 +161,6 @@ $( document ).ready(function() {
 
 	function alteraHtml(html)
 	{
-		console.log("." + html);
 		$(".archives").hide();
 		$("." + html).show();
 	}

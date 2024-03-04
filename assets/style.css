@@ -122,6 +122,8 @@ tr {
     height: 50px;
 	border-bottom: 1px solid #2B2B2B;
 	display: -webkit-inline-box;
+	position: fixed;
+    background-color: #222222;
 }
 
 .aba {
@@ -179,9 +181,6 @@ p {
     width: 100%;
 }
 
-.conteudo {
-}
-
 .reservedWord {
 	color: #C2185B;
 	font-style: italic;
@@ -198,6 +197,7 @@ p {
 
 .bodyClass {
   	font-family: "JetBrains Mono", monospace;
+	margin-top: 50px;
 }
 
 .identy1 {
@@ -217,7 +217,7 @@ p {
 }
 
 .miniFoto {
-	width: 20px;
+	width: 15px;
     vertical-align: bottom;
 	cursor: pointer;
 }
@@ -240,8 +240,8 @@ p {
 }
 
 .circle {
-	width: 15px;
-	height: 15px;
+	width: 10px;
+	height: 10px;
 	-webkit-border-radius: 25px;
 	-moz-border-radius: 25px;
 	border-radius: 25px;
@@ -293,6 +293,9 @@ table {
 
 .pdf {
 	cursor: pointer;
+	width: 15px;
+	height: 15px;
+	vertical-align: top;
 }
 
 .pdf:hover {
