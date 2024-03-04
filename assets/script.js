@@ -101,13 +101,16 @@ $( document ).ready(function() {
 
 	$('.miniFoto').click(function () {
 		var $img = $(this);
-		$('#divLargerImage').html($img.clone().width(500)).add($('#divOverlay')).fadeIn();
+		$('#divLargerImage').html($img.clone().width(500).removeClass("miniFoto")).add($('#divOverlay')).fadeIn();
 	});
 
-	$('#divLargerImage').add($('#divOverlay')).click(function () {
-		$('#divLargerImage').add($('#divOverlay')).fadeOut(function () {
-			$('#divLargerImage').empty();
-		});
+	$("body").click(function(e){
+		if(!$(e.target).hasClass("miniFoto") && $("#divLargerImage").is(":visible"))
+		{
+			$('#divLargerImage').add($('#divOverlay')).fadeOut(function () {
+				$('#divLargerImage').empty();
+			});
+		}
 	});
 
 	$(".circles").each(function( index ) {
