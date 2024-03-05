@@ -302,7 +302,7 @@ table {
 	opacity: 0.7;
 }
 
-.projects {
+.projects, .clickDescricao {
 	cursor: pointer;
 	width: 17px;
 	height: 17px;
@@ -359,4 +359,15 @@ table {
 
 .noCursor {
 	cursor: default !important;
+}
+
+.descricao {
+	box-shadow: 2px 2px 4px black;
+    overflow: hidden;
+    width: 30%;
+    position: absolute;
+    z-index: 99;
+    display: none;
+    padding: 20px;
+    background-color: hsl(0 0% 15% / 1);
 }

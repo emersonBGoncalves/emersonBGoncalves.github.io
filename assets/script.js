@@ -123,8 +123,9 @@ $( document ).ready(function() {
     });
 
 	$(".conteudo").each(function( index ) {
-		$(this).find('p').length;
-		for(var i = 1; i <= ($(this).find('p').length > 40 ? $(this).find('p').length : 40); i++)
+		
+		console.log($(this).find('p'));
+		for(var i = 1; i <= $(this).find('p').length; i++)
 		{
 			$(this).prev().append('<p class="dark">' + i + '</p>');	
 		}
@@ -144,6 +145,13 @@ $( document ).ready(function() {
 		}
 	});
 
+	$("body").click(function(e){
+		if(!$(e.target).hasClass("descricao") && $(".descricao").is(":visible"))
+		{
+			$(".descricao").fadeOut();
+		}
+	});
+
 	$(".circles").each(function( index ) {
 		var preenchidos = $(this).data('qtd');
 		for(var i = 1; i <= 5; i++)
@@ -157,6 +165,22 @@ $( document ).ready(function() {
 
 			$(this).append('<div class="circle ' + classe + '"></div>');	
 		}
+	});
+
+	$(".clickDescricao").click(function(e){
+		e.stopPropagation();
+		var posx = e.pageX;
+		var posy = e.pageY;
+		var descricao = $(this).data("descricao");
+		
+		if(!$("." + descricao).is(":visible"))
+			$(".descricao").fadeOut();
+
+		posx = posx + 20;
+		$("." + descricao).fadeIn();
+		$("." + descricao).css("top", `${posy}px`);
+		$("." + descricao).css("left", `${posx}px`);
+
 	});
 
 	function alteraHtml(html)
