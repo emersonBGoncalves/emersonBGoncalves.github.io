@@ -68,8 +68,8 @@ $( document ).ready(function() {
 
 	$(document).on('mousedown', '.aba',  function(e){
 
-        if(event.which === 2){
-         	e.stopPropagation();
+		if(event.which === 2){
+			e.stopPropagation();
 
 			var active = $(this).hasClass("active");
 
@@ -89,8 +89,8 @@ $( document ).ready(function() {
 
 			if($(".aba").length == 0)
 				alteraHtml('Nada');
-        }
-      });
+		}
+	});
 
 	$(".trSon").click(function(){
 		$(".trSon").removeClass("active");
@@ -124,7 +124,7 @@ $( document ).ready(function() {
 
 	$(".conteudo").each(function( index ) {
 		$(this).find('p').length;
-		for(var i = 1; i <= $(this).find('p').length; i++)
+		for(var i = 1; i <= ($(this).find('p').length > 40 ? $(this).find('p').length : 40); i++)
 		{
 			$(this).prev().append('<p class="dark">' + i + '</p>');	
 		}
@@ -164,12 +164,4 @@ $( document ).ready(function() {
 		$(".archives").hide();
 		$("." + html).show();
 	}
-
-	function url_content(url)
-	{
-		var content;
-		$.get(url,function( data ) {content=data});
-		return content;
-	}
-
 });

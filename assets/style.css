@@ -163,7 +163,7 @@ tr {
 	color: #FCE566;
 }
 
-.numberLines {
+.numberLines, .numberLines2 {
 	width: 1%;
     padding-left: 40%;
     padding-right: 55%;
@@ -314,8 +314,8 @@ table {
 	height: 360px;
 	width: 640px;
     position: absolute;
-	top: 10%;
-    left: 40%;
+	top: 20%;
+    left: 50%;
     z-index: 99;
 	display: none;
 }
