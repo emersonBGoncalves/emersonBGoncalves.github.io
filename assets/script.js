@@ -152,21 +152,6 @@ $( document ).ready(function() {
 		}
 	});
 
-	$(".circles").each(function( index ) {
-		var preenchidos = $(this).data('qtd');
-		for(var i = 1; i <= 5; i++)
-		{
-			var classe = "";
-			if(preenchidos > 0)
-			{
-				classe = 'preenchido';
-				preenchidos--;
-			}
-
-			$(this).append('<div class="circle ' + classe + '"></div>');	
-		}
-	});
-
 	$(".clickDescricao").click(function(e){
 		e.stopPropagation();
 		var posx = e.pageX;
