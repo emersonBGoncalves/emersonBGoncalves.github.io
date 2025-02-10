@@ -73,7 +73,5 @@ $(document).ready(function(){
 		posy = posy - 180;
 		$(".carousel").css("top", `${posy}px`)
 		$(".carousel").css("left", `${posx}px`)
-		
-		console.log($(".carousel").css("top"));
 	}
 });

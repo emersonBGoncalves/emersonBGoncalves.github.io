@@ -124,7 +124,6 @@ $( document ).ready(function() {
 
 	$(".conteudo").each(function( index ) {
 		
-		console.log($(this).find('p'));
 		for(var i = 1; i <= $(this).find('p').length; i++)
 		{
 			$(this).prev().append('<p class="dark">' + i + '</p>');	
