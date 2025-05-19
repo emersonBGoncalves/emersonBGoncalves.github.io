@@ -172,4 +172,12 @@ $( document ).ready(function() {
 		$(".archives").hide();
 		$("." + html).show();
 	}
+
+	$(".terminalClose").click(function(e){
+		e.stopPropagation();
+		$(".terminal").fadeOut();
+
+		// alterar o max height do bodyClass para max-height: calc(100% - 50px);
+		$(".bodyClass").css("max-height", "calc(100% - 50px)");
+	});
 });
