@@ -181,7 +181,9 @@ let Pages = [
                     name: 'siptekSuite',
                     images: 'suite1.jpg,suite2.png,suite3.png,suite4.png',
                     description: 'Siptek Suite is a WEB system designed for call centers and companies that use PABX, which has several modules that facilitate the work of call centers when making calls and business organization, such as Predictive Dialer, URAs, Service Queues, Smart Campaigns, TTS (Text to Speak), Pricing, integrated CRM and PABX.<br><br>Technologies Used: PHP, javascript, HTML, CSS, Mysql, ElasticSearch and Java',
-                    links: []
+                    links: [
+                        'https://dazsoft.com.br/solucao-callcenters'
+                    ]
                 }
             ]
         }
