@@ -162,6 +162,15 @@ let Pages = [
             type: 'arrayProjects',
             value: [
                 {
+                    name: 'portifolio',
+                    images: 'portifolio2.png,portifolio1.png,portifolio3.png,portifolio4.png,portifolio5.png,portifolio6.png',
+                    description: 'Personal Portfolio is a WEB system created to present my projects and skills through a clean and modern interface, focusing on clear navigation and responsiveness across different devices. The layout and structure were inspired by the website emersonbgoncalves.github.io, from which I analyzed the visual and interactive elements to build a simple and effective design. <br><br>Technologies Used: HTML, CSS, JavaScript',
+                    links: [
+                        'https://emersonbgoncalves.github.io',
+                        'https://github.com/emersonBGoncalves/emersonBGoncalves.github.io'
+                    ]
+                },
+                {
                     name: 'alternativaIngressos',
                     images: 'alternativa1.png,alternativa2.png,alternativa3.png,alternativa5.png,alternativa6.png,alternativa7.png',
                     description: 'Alternativa Ingressos is a WEB system initially created as a project to help my father with his work of selling tickets for events, making communication between him and his client increasingly simple and objective, thus increasing the quality of his sales. <br><br>Technologies Used: PHP (Slim Framework 4), javascript, HTML, CSS, Mysql',
@@ -331,9 +340,10 @@ $( document ).ready(function() {
                             if (item.links.length > 0) {
                                 $(local).append('<p class="identy2"><span class="string">\'links\'</span> <span class="reservedWord">=></span> [</p>');
                                 item.links.forEach((link, keyArray) => {
-                                    $(local).append('<p class="identy3"><a target="_blank" href="' + link + '">' + link + '</a></p>');
                                     if (keyArray + 1 < item.links.length) {
-                                        $(local).append('<p class="identy2">,</p>');
+                                        $(local).append('<p class="identy3"><a target="_blank" href="' + link + '">' + link + '</a>,</p>');
+                                    } else {
+                                        $(local).append('<p class="identy3"><a target="_blank" href="' + link + '">' + link + '</a></p>');
                                     }
                                 });
                                 $(local).append('<p class="identy2">]</p>');
