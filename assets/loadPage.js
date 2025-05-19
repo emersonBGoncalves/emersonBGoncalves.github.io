@@ -162,7 +162,7 @@ let Pages = [
             type: 'arrayProjects',
             value: [
                 {
-                    name: 'portifolio',
+                    name: 'portfolio',
                     images: 'portifolio2.png,portifolio1.png,portifolio3.png,portifolio4.png,portifolio5.png,portifolio6.png',
                     description: 'Personal Portfolio is a WEB system created to present my projects and skills through a clean and modern interface, focusing on clear navigation and responsiveness across different devices. The layout and structure were inspired by the website emersonbgoncalves.github.io, from which I analyzed the visual and interactive elements to build a simple and effective design. <br><br>Technologies Used: HTML, CSS, JavaScript',
                     links: [
