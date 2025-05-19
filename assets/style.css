@@ -19,6 +19,7 @@ html, body {
 	border-right: 1px solid #2B2B2B;
 	color: #D3D3D3;
 	padding: 20px 0px 20px 20px;
+	background-color: #2B2B2B;
 }
 
 .rightMenu {
@@ -123,7 +124,7 @@ tr {
 	border-bottom: 1px solid #2B2B2B;
 	display: -webkit-inline-box;
 	position: fixed;
-    background-color: #222222;
+    background-color: #2B2B2B;
 }
 
 .aba {
@@ -149,6 +150,7 @@ tr {
 
 .aba.active {
 	border-bottom: 2px solid #FCE566;
+	background-color: #222222;
 }
 
 .aba.inactive:hover {
