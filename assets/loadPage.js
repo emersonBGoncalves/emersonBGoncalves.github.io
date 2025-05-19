@@ -173,7 +173,9 @@ let Pages = [
                     name: 'genRest',
                     images: 'genrest1.png,genrest2.png,genrest3.png,genrest4.png,genrest5.png,genrest6.png',
                     description: 'GenRest is a WEB system developed as a TCC project for my Computer Science course, in which its purpose would be to automatically generate Rest APIs for clients from the connection data to the database, being monetized by the number of requests on the created endpoints.<br><br>Technologies Used: Java, Spring Boot, PHP, HTML, CSS, Mysql and Bootstrap',
-                    links: []
+                    links: [
+                        'https://github.com/emersonBGoncalves/genrest'
+                    ]
                 },
                 {
                     name: 'siptekSuite',
