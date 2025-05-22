@@ -435,4 +435,43 @@ table {
 	opacity: 0.5;
 }
 
+.radioItem {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+  line-height: 1;
+  cursor: pointer;
+  font-size: 14px;
+	align-items: end;
+}
 
+.radioItem:not(:last-of-type) {
+  margin-right: 15px;
+}
+
+.radioButton {
+  appearance: none;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #fce566;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.radioButton:checked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 12px;
+  height: 12px;
+  margin: auto;
+  border-radius: 9999px;
+  background-color: #fce566;
+}
+
+.radioLinguagem {
+	bottom: 0px;
+    position: fixed;
+    margin-bottom: 10px;
+}

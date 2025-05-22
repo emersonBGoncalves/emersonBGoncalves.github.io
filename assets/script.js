@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-	$(".arrow").click(function(){
+	$(document).on('click', '.arrow', function(e) {
 		
 		if($(this).hasClass('arrowUp'))
 		{
@@ -92,7 +92,7 @@ $( document ).ready(function() {
 		}
 	});
 
-	$(".trSon").click(function(){
+	$(document).on('click', '.trSon', function(e) {
 		$(".trSon").removeClass("active");
 		$(this).addClass("active");
 		$(".aba").addClass("inactive");
@@ -130,12 +130,12 @@ $( document ).ready(function() {
 		}
 	});
 
-	$('.miniFoto').click(function () {
+	$(document).on('click', '.miniFoto', function(e) {
 		var $img = $(this);
 		$('#divLargerImage').html($img.clone().width(500).removeClass("miniFoto")).add($('#divOverlay')).fadeIn();
 	});
 
-	$("body").click(function(e){
+	$(document).on('click', 'body', function(e) {
 		if(!$(e.target).hasClass("miniFoto") && $("#divLargerImage").is(":visible"))
 		{
 			$('#divLargerImage').add($('#divOverlay')).fadeOut(function () {
@@ -144,14 +144,14 @@ $( document ).ready(function() {
 		}
 	});
 
-	$("body").click(function(e){
+	$(document).on('click', 'body', function(e) {
 		if(!$(e.target).hasClass("descricao") && $(".descricao").is(":visible"))
 		{
 			$(".descricao").fadeOut();
 		}
 	});
 
-	$(".clickDescricao").click(function(e){
+	$(document).on('click', '.clickDescricao', function(e) {
 		e.stopPropagation();
 		var posx = e.pageX;
 		var posy = e.pageY;
@@ -173,7 +173,7 @@ $( document ).ready(function() {
 		$("." + html).show();
 	}
 
-	$(".terminalClose").click(function(e){
+	$(document).on('click', '.terminalClose', function(e) {
 		e.stopPropagation();
 		$(".terminal").fadeOut();
 

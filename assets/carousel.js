@@ -6,12 +6,12 @@ let idx = 0;
 let qtd_imgs = 0;
 
 $(document).ready(function(){
-	$(".projects").click(function(e){
+	$(document).on('click', '.projects', function(e) {
 		e.stopPropagation();
 		initCarousel($(this).data("imgs"), e.pageX, e.pageY);
 	});
 
-	$(".leftCarousel").click(function(e){
+	$(document).on('click', '.leftCarousel', function(e) {
 		e.stopPropagation();
 		if($(this).css("opacity") > 0)
 		{
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$(".rightCarousel").click(function(e){
+	$(document).on('click', '.rightCarousel', function(e) {
 		e.stopPropagation();
 		if($(this).css("opacity") > 0)
 		{
@@ -42,8 +42,7 @@ $(document).ready(function(){
 		}
 	});
 
-
-	$("body").click(function(e){
+	$(document).on('click', 'body', function(e) {
 		if(!$(e.target).hasClass("botoesCarousel") && 
 			!$(e.target).hasClass("rightCarousel") && 
 			!$(e.target).hasClass("leftCarousel") && 
