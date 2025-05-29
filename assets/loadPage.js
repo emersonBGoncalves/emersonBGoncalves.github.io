@@ -18,8 +18,18 @@ $( document ).ready(function() {
         let language = $(this).val();
         destroyPage();
         loadPage(language);
+        numberLines();
 
     });
+
+	function numberLines() {
+        $(".conteudo").each(function( index ) {
+            for(var i = 1; i <= $(this).find('p').length; i++)
+            {
+                $(this).prev().append('<p class="dark">' + i + '</p>');	
+            }
+        });
+	}
 
     function loadPage(language) {
 

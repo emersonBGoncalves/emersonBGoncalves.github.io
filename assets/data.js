@@ -102,18 +102,6 @@ let Pages = {
                                 'Development of SQL scripts and automation of routines.'
                             ]
                         }
-                    },
-                    {
-                        name: 'Mc Donald\'s',
-                        position: 'Attendant',
-                        initialDate: 'April 2015',
-                        finalDate: 'March 2016',
-                        responsabilities: {
-                            type: 'arrayResponsabilities',
-                            value: [
-                                'Customer service and teamwork.'
-                            ]
-                        }
                     }
                 ]
             }
@@ -354,18 +342,6 @@ let Pages = {
                             value: [
                                 'Criação e manutenção de aplicações PHP/HTML/CSS escaláveis.',
                                 'Desenvolvimento de scripts SQL e automação de rotinas.'
-                            ]
-                        }
-                    },
-                    {
-                        name: 'Mc Donald\'s',
-                        position: 'Atendente',
-                        initialDate: 'Abril de 2015',
-                        finalDate: 'Março de 2016',
-                        responsabilities: {
-                            type: 'arrayResponsabilities',
-                            value: [
-                                'Atendimento ao público e trabalho em equipe.'
                             ]
                         }
                     }

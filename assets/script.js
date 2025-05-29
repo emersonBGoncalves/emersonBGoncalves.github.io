@@ -123,12 +123,15 @@ $( document ).ready(function() {
     });
 
 	$(".conteudo").each(function( index ) {
-		
-		for(var i = 1; i <= $(this).find('p').length; i++)
-		{
-			$(this).prev().append('<p class="dark">' + i + '</p>');	
-		}
+		numberLines(this);
 	});
+
+	function numberLines(element) {
+		for(var i = 1; i <= $(element).find('p').length; i++)
+		{
+			$(element).prev().append('<p class="dark">' + i + '</p>');	
+		}
+	}
 
 	$(document).on('click', '.miniFoto', function(e) {
 		var $img = $(this);
