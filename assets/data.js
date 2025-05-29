@@ -44,11 +44,11 @@ let Pages = {
                 value: 'https://www.linkedin.com/in/emersonbgoncalvesdev/'
             },
             resumePTBR: {
-                type: 'file',
+                type: 'fileLink',
                 value: 'curriculopt.html'
             },
             resumeEN: {
-                type: 'file',
+                type: 'fileLink',
                 value: 'curriculoen.html'
             },
             local: {
@@ -298,11 +298,11 @@ let Pages = {
                 value: 'https://www.linkedin.com/in/emersonbgoncalvesdev/'
             },
             curriculoPT: {
-                type: 'file',
+                type: 'fileLink',
                 value: 'curriculopt.html'
             },
             curriculoEN: {
-                type: 'file',
+                type: 'fileLink',
                 value: 'curriculoen.html'
             },
             local: {

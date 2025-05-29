@@ -68,4 +68,13 @@ $(document).ready(function() {
             break;
         }
     });
+
 });
+
+
+window.addEventListener('load', function () {
+    // Pequeno delay para garantir que estilos foram aplicados
+    setTimeout(function () {
+      window.print();
+    }, 100); // 100ms normalmente é suficiente
+  });
