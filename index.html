@@ -20,7 +20,7 @@
 			async function baixarComoPDF(url) {
 				const iframe = document.getElementById(url.trim().split('.')[0]);
 
-				iframe.onload = () => {
+				//iframe.onload = () => {
 					const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
 					// Aguarda o JavaScript preencher o conteúdo (ex: data.js)
@@ -50,7 +50,7 @@
 						});
 
 					}, 1000); // aguarda conteúdo e css
-				};
+				//};
 			}
 		</script>
 
