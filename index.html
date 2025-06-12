@@ -19,32 +19,38 @@
 		<script>
 			async function baixarComoPDF(url) {
 				const iframe = document.getElementById(url.trim().split('.')[0]);
-				const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-				// Aguarda o JavaScript preencher o conteúdo (ex: data.js)
-				const content = iframeDoc.body.cloneNode(true); // clona o conteúdo renderizado
+				iframe.onload = () => {
+					const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-				// Cria um container temporário
-				const tempContainer = document.createElement('div');
-				tempContainer.style.position = 'fixed';
-				tempContainer.style.top = '-9999px'; // escondido
-				tempContainer.appendChild(content);
-				document.body.appendChild(tempContainer);
-				console.log('sdsd');
-				html2pdf()
-				.set({
-					margin: 0,
-					filename: url.trim().split('.')[0] + '.pdf',
-					image: { type: 'jpeg', quality: 0.98 },
-					html2canvas: { scale: 2 },
-					jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-				})
-				.from(tempContainer)
-				.save()
-				.then(() => {
-					// Limpa após gerar
-					document.body.removeChild(tempContainer);
-				});
+					// Aguarda o JavaScript preencher o conteúdo (ex: data.js)
+					setTimeout(() => {
+						const content = iframeDoc.body.cloneNode(true); // clona o conteúdo renderizado
+
+						// Cria um container temporário
+						const tempContainer = document.createElement('div');
+						tempContainer.style.position = 'fixed';
+						tempContainer.style.top = '-9999px'; // escondido
+						tempContainer.appendChild(content);
+						document.body.appendChild(tempContainer);
+
+						html2pdf()
+						.set({
+							margin: 0,
+							filename: url.trim().split('.')[0] + '.pdf',
+							image: { type: 'jpeg', quality: 0.98 },
+							html2canvas: { scale: 2 },
+							jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+						})
+						.from(tempContainer)
+						.save()
+						.then(() => {
+							// Limpa após gerar
+							document.body.removeChild(tempContainer);
+						});
+
+					}, 1000); // aguarda conteúdo e css
+				};
 			}
 		</script>
 
