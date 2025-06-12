@@ -23,10 +23,18 @@
 
 				iframe.onload = () => {
 				const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-				const content = iframeDoc.body;
 
-				// Aguarda uma renderização final (ajuste se o conteúdo for muito dinâmico)
+				// Garante que o CSS externo seja incluído no <head> do iframe
+				const cssLink = iframeDoc.createElement('link');
+				cssLink.rel = 'stylesheet';
+				cssLink.href = 'assets/curriculo.css';
+				cssLink.type = 'text/css';
+				iframeDoc.head.appendChild(cssLink);
+
+				// Aguarda o CSS ser carregado (delay curto)
 				setTimeout(() => {
+					const content = iframeDoc.body;
+
 					html2pdf()
 					.set({
 						margin: 0,
@@ -37,7 +45,7 @@
 					})
 					.from(content)
 					.save();
-				}, 500); // ajustável: espera meio segundo após o load
+				}, 700); // dá tempo de carregar o CSS
 				};
 			}
 		</script>
