@@ -17,35 +17,39 @@
 		<script src="assets/script.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 		<script>
-			function baixarComoPDF(url) {
-				const iframe = document.getElementById('iframe-pdf');
-				iframe.src = url;
+			async function baixarComoPDF(url) {
+				const iframe = document.getElementById(url.trim().split('.')[0]);
 
 				iframe.onload = () => {
 				const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-				// Garante que o CSS externo seja incluído no <head> do iframe
-				const cssLink = iframeDoc.createElement('link');
-				cssLink.rel = 'stylesheet';
-				cssLink.href = 'assets/curriculo.css';
-				cssLink.type = 'text/css';
-				iframeDoc.head.appendChild(cssLink);
-
-				// Aguarda o CSS ser carregado (delay curto)
+				// Aguarda o JavaScript preencher o conteúdo (ex: data.js)
 				setTimeout(() => {
-					const content = iframeDoc.body;
+					const content = iframeDoc.body.cloneNode(true); // clona o conteúdo renderizado
+
+					// Cria um container temporário
+					const tempContainer = document.createElement('div');
+					tempContainer.style.position = 'fixed';
+					tempContainer.style.top = '-9999px'; // escondido
+					tempContainer.appendChild(content);
+					document.body.appendChild(tempContainer);
 
 					html2pdf()
 					.set({
 						margin: 0,
-						filename: 'curriculopt.pdf',
+						filename: url.trim().split('.')[0] + '.pdf',
 						image: { type: 'jpeg', quality: 0.98 },
 						html2canvas: { scale: 2 },
 						jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
 					})
-					.from(content)
-					.save();
-				}, 700); // dá tempo de carregar o CSS
+					.from(tempContainer)
+					.save()
+					.then(() => {
+						// Limpa após gerar
+						document.body.removeChild(tempContainer);
+					});
+
+				}, 1000); // aguarda conteúdo e css
 				};
 			}
 		</script>
@@ -61,7 +65,8 @@
 		</style>
 	</head>
 	<body>
-		<iframe id="iframe-pdf" style="display: none;"></iframe>
+		<iframe id="iframe-pdf curriculopt" src="curriculopt.html" style="display:none;"></iframe>
+		<iframe id="iframe-pdf curriculoen" src="curriculoen.html" style="display:none;"></iframe>
 		<div class="container">
 			<div class="leftMenu">
 				<table>
