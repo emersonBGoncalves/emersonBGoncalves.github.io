@@ -22,7 +22,7 @@
 
 				//iframe.onload = () => {
 					const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-					console.log(iframeDoc);
+					console.log(iframeDoc.body.cloneNode(true));
 
 					// Aguarda o JavaScript preencher o conteúdo (ex: data.js)
 					setTimeout(() => {
