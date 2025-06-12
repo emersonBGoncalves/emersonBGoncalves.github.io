@@ -18,58 +18,70 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 		<script>
 			async function baixarComoPDF(url) {
-	const iframe = document.getElementById(url.trim().split('.')[0]);
+  const iframe = document.getElementById(url.trim().split('.')[0]);
 
-	if (!iframe) {
-		alert("Iframe não encontrado");
-		return;
-	}
+  if (!iframe) {
+    alert("Iframe não encontrado");
+    return;
+  }
 
-	// Garante que o iframe está carregado
-	iframe.onload = () => {
-		try {
-			const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  try {
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-			// Cria um container temporário com HTML completo
-			const tempContainer = document.createElement('iframe');
-			tempContainer.style.position = 'fixed';
-			tempContainer.style.top = '-9999px';
-			document.body.appendChild(tempContainer);
+    // Clona o body já com o conteúdo que o JS do iframe preencheu
+    const content = iframeDoc.body.cloneNode(true);
 
-			const doc = tempContainer.contentDocument || tempContainer.contentWindow.document;
+    // Cria container temporário no DOM principal
+    const tempContainer = document.createElement('div');
+    tempContainer.style.position = 'fixed';
+    tempContainer.style.top = '-9999px';
+    tempContainer.style.left = '-9999px';
+    tempContainer.style.width = '210mm'; // tamanho A4 aproximado para melhor renderização
+    tempContainer.style.height = '297mm';
+    tempContainer.style.background = 'white'; // fundo branco para o PDF
 
-			// Copia head e body
-			doc.open();
-			doc.write('<!DOCTYPE html>' + iframeDoc.documentElement.outerHTML);
-			doc.close();
+    // Copia estilos do head do iframe para dentro do container
+    const head = iframeDoc.head;
 
-			// Aguarda carregamento do CSS e JS no novo iframe
-			setTimeout(() => {
-				html2pdf()
-					.set({
-						margin: 0,
-						filename: url.trim().split('.')[0] + '.pdf',
-						image: { type: 'jpeg', quality: 0.98 },
-						html2canvas: { scale: 2 },
-						jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-					})
-					.from(doc.body)
-					.save()
-					.then(() => {
-						// Remove iframe temporário
-						document.body.removeChild(tempContainer);
-					});
-			}, 1000); // tempo para garantir que CSS carregou
-		} catch (error) {
-			alert("Erro ao acessar o conteúdo do iframe: " + error.message);
-			console.error(error);
-		}
-	};
+    // 1. Clona as tags <style> embutidas
+    head.querySelectorAll('style').forEach(styleTag => {
+      tempContainer.appendChild(styleTag.cloneNode(true));
+    });
 
-	// Se o iframe já estiver carregado (caso o evento onload não dispare)
-	if (iframe.contentDocument.readyState === 'complete') {
-		iframe.onload();
-	}
+    // 2. Clona os links de CSS externos
+    head.querySelectorAll('link[rel="stylesheet"]').forEach(linkTag => {
+      const newLink = document.createElement('link');
+      newLink.rel = 'stylesheet';
+      newLink.href = linkTag.href;
+      tempContainer.appendChild(newLink);
+    });
+
+    // Finalmente insere o conteúdo do body no container
+    tempContainer.appendChild(content);
+
+    document.body.appendChild(tempContainer);
+
+    // Dá um tempo para o CSS carregar e aplicar (você pode ajustar o delay se necessário)
+    setTimeout(() => {
+      html2pdf()
+        .set({
+          margin: 0,
+          filename: url.trim().split('.')[0] + '.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, logging: false },
+          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        })
+        .from(tempContainer)
+        .save()
+        .then(() => {
+          document.body.removeChild(tempContainer);
+        });
+    }, 1500); // 1.5 segundos para garantir que o CSS foi carregado
+
+  } catch (error) {
+    alert("Erro ao acessar o conteúdo do iframe: " + error.message);
+    console.error(error);
+  }
 }
 		</script>
 
