@@ -15,6 +15,28 @@
   		<script src="assets/data.js"></script>
 		<script src="assets/loadPage.js"></script>
 		<script src="assets/script.js"></script>
+		<script>
+			function baixarComoPDF(name) {
+				fetch('files/' + name.trim())
+				.then(response => response.text())
+				.then(htmlContent => {
+					const blob = new Blob([htmlContent], { type: 'application/pdf' });
+					const url = URL.createObjectURL(blob);
+
+					const a = document.createElement('a');
+					a.href = url;
+					a.download = 'curriculopt.pdf';
+					document.body.appendChild(a);
+					a.click();
+					document.body.removeChild(a);
+
+					URL.revokeObjectURL(url);
+				})
+				.catch(error => {
+					console.error('Erro ao baixar o arquivo:', error);
+				});
+			}
+		</script>
 
 		<style>
 			.rightMenu {
