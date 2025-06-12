@@ -25,18 +25,10 @@
 				const html = await response.text();
 				const container = document.getElementById('container-html');
 
-				// Limpa conteúdo anterior
-				container.innerHTML = '';
+				// Isola e injeta o HTML no container invisível
+				container.innerHTML = html;
 
-				// Cria um shadow DOM isolado
-				let shadowRoot = container.shadowRoot;
-				if (!shadowRoot) {
-					shadowRoot = container.attachShadow({ mode: 'open' });
-				}
-
-				shadowRoot.innerHTML = html;
-
-				// Aguarda o DOM renderizar antes de gerar o PDF
+				// Aguarda renderização antes de gerar o PDF
 				setTimeout(() => {
 					html2pdf()
 					.set({
@@ -46,9 +38,9 @@
 						html2canvas: { scale: 2 },
 						jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
 					})
-					.from(shadowRoot)
+					.from(container)
 					.save();
-				}, 100); // pequena pausa para garantir renderização
+				}, 100); // pequeno atraso para garantir renderização
 				} catch (error) {
 				alert('Erro ao gerar PDF: ' + error.message);
 				console.error(error);
