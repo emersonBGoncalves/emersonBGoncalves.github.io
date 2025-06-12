@@ -17,17 +17,27 @@
 		<script src="assets/script.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 		<script>
-			function baixarComoPDF(name) {
-				fetch(name.trim())
-				.then(response => {
-					if (!response.ok) throw new Error('Erro ao carregar o arquivo HTML');
-					return response.text();
-				})
-				.then(html => {
-					const container = document.getElementById('container-html');
-					container.innerHTML = html;
+			async function baixarComoPDF(name) {
+				try {
+				const response = await fetch(name.trim());
+				if (!response.ok) throw new Error('Erro ao carregar o arquivo HTML');
 
-					// Gera o PDF
+				const html = await response.text();
+				const container = document.getElementById('container-html');
+
+				// Limpa conteúdo anterior
+				container.innerHTML = '';
+
+				// Cria um shadow DOM isolado
+				let shadowRoot = container.shadowRoot;
+				if (!shadowRoot) {
+					shadowRoot = container.attachShadow({ mode: 'open' });
+				}
+
+				shadowRoot.innerHTML = html;
+
+				// Aguarda o DOM renderizar antes de gerar o PDF
+				setTimeout(() => {
 					html2pdf()
 					.set({
 						margin: 0.5,
@@ -36,13 +46,13 @@
 						html2canvas: { scale: 2 },
 						jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
 					})
-					.from(container)
+					.from(shadowRoot)
 					.save();
-				})
-				.catch(error => {
-					alert('Erro ao gerar PDF: ' + error.message);
-					console.error(error);
-				});
+				}, 100); // pequena pausa para garantir renderização
+				} catch (error) {
+				alert('Erro ao gerar PDF: ' + error.message);
+				console.error(error);
+				}
 			}
 		</script>
 
