@@ -17,35 +17,28 @@
 		<script src="assets/script.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 		<script>
-			async function baixarComoPDF(name) {
-				try {
-				const response = await fetch(name.trim());
-				if (!response.ok) throw new Error('Erro ao carregar o arquivo HTML');
+			function baixarComoPDF(url) {
+				const iframe = document.getElementById('iframe-pdf');
+				iframe.src = url;
 
-				const html = await response.text();
-				const container = document.getElementById('container-html');
+				iframe.onload = () => {
+				const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+				const content = iframeDoc.body;
 
-				// Isola e injeta o HTML no container invisível
-				container.innerHTML = html;
-
-				// Aguarda renderização antes de gerar o PDF
+				// Aguarda uma renderização final (ajuste se o conteúdo for muito dinâmico)
 				setTimeout(() => {
 					html2pdf()
 					.set({
-						margin: 0.5,
+						margin: 0,
 						filename: 'curriculopt.pdf',
 						image: { type: 'jpeg', quality: 0.98 },
 						html2canvas: { scale: 2 },
 						jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
 					})
-					.from(container)
+					.from(content)
 					.save();
-					container.innerHTML = '';
-				}, 100); // pequeno atraso para garantir renderização
-				} catch (error) {
-				alert('Erro ao gerar PDF: ' + error.message);
-				console.error(error);
-				}
+				}, 500); // ajustável: espera meio segundo após o load
+				};
 			}
 		</script>
 
@@ -60,7 +53,7 @@
 		</style>
 	</head>
 	<body>
-		<div id="container-html" style="display: none;"></div>
+		<iframe id="iframe-pdf" style="display: none;"></iframe>
 		<div class="container">
 			<div class="leftMenu">
 				<table>
