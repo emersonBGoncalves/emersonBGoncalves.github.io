@@ -146,6 +146,10 @@ let Pages = {
                 type: 'skill',
                 value: '$redis'
             },
+            rabbitmq: {
+                type: 'skill',
+                value: '$rabbitmq'
+            },
             git: {
                 type: 'skill',
                 value: '$git'
@@ -379,6 +383,10 @@ let Pages = {
             redis: {
                 type: 'skill',
                 value: '$redis'
+            },
+            rabbitmq: {
+                type: 'skill',
+                value: '$rabbitmq'
             },
             git: {
                 type: 'skill',
