@@ -45,11 +45,11 @@ let Pages = {
             },
             resumePTBR: {
                 type: 'fileLink',
-                value: 'curriculopt.html'
+                value: 'curriculopt.pdf'
             },
             resumeEN: {
                 type: 'fileLink',
-                value: 'curriculoen.html'
+                value: 'curriculoen.pdf'
             },
             local: {
                 type: 'string',
@@ -291,11 +291,11 @@ let Pages = {
             },
             curriculoPT: {
                 type: 'fileLink',
-                value: 'curriculopt.html'
+                value: 'curriculopt.pdf'
             },
             curriculoEN: {
                 type: 'fileLink',
-                value: 'curriculoen.html'
+                value: 'curriculoen.pdf'
             },
             local: {
                 type: 'string',

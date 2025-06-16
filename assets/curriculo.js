@@ -72,9 +72,9 @@ $(document).ready(function() {
 });
 
 
-window.addEventListener('load', function () {
+/*window.addEventListener('load', function () {
     // Pequeno delay para garantir que estilos foram aplicados
     setTimeout(function () {
       window.print();
     }, 100); // 100ms normalmente é suficiente
-  });
+  });*/
