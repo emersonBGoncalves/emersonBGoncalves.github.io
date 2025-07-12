@@ -63,10 +63,24 @@ let Pages = {
                 type: 'array',
                 value: [
                     {
+                        name: 'Spassu - Anatel',
+                        position: 'Mid-level PHP Developer',
+                        initialDate: 'July 2024',
+                        finalDate: 'Present',
+                        responsabilities: {
+                            type: 'arrayResponsabilities',
+                            value: [
+                                'Development of Web systems using Laravel and Docker.',
+                                'Implementation and maintenance of RESTful APIs in PHP.',
+                                'Administration and optimization of Postgres and MySQL databases.'
+                            ]
+                        }
+                    },
+                    {
                         name: 'G4F - SMS SP',
                         position: 'Mid-level PHP Developer',
                         initialDate: 'February 2024',
-                        finalDate: 'Present',
+                        finalDate: 'July 2025',
                         responsabilities: {
                             type: 'arrayResponsabilities',
                             value: [
@@ -309,10 +323,24 @@ let Pages = {
                 type: 'array',
                 value: [
                     {
+                        name: 'Spassu - Anatel',
+                        position: 'Desenvolvedor PHP Pleno',
+                        initialDate: 'Julho de 2025',
+                        finalDate: 'Atual',
+                        responsabilities: {
+                            type: 'arrayResponsabilities',
+                            value: [
+                                'Desenvolvimento de sistemas Web utilizando Laravel e Docker.',
+                                'Implementação e manutenção de APIs RESTful em PHP.',
+                                'Administração e otimização de banco Postgres e MySQL.'
+                            ]
+                        }
+                    },
+                    {
                         name: 'G4F - SMS SP',
                         position: 'Desenvolvedor PHP Pleno',
                         initialDate: 'Fevereiro de 2024',
-                        finalDate: 'Atual',
+                        finalDate: 'Julho de 2025',
                         responsabilities: {
                             type: 'arrayResponsabilities',
                             value: [
